@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/shop"
+        android:title="@string/shop"
+        app:showAsAction="always">
+    </item>
+
+    <item
+        android:id="@+id/calender"
+        android:title="@string/calender"
+        app:showAsAction="always">
+
+    </item>
+    <item
+        android:id="@+id/shop_calender"
+        android:title="@string/shop_calender"
+        app:showAsAction="always">
+
+    </item>
+
+</menu>

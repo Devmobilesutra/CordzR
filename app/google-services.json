@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "379217235557",
+    "firebase_url": "https://retailerorderingapp.firebaseio.com",
+    "project_id": "retailerorderingapp",
+    "storage_bucket": "retailerorderingapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:379217235557:android:8b2a8f417ecb9afa",
+        "android_client_info": {
+          "package_name": "com.sapl.retailerorderingmsdpharma"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "379217235557-lm3j93k46abm5k3ai9f1gvfsp956hn5r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCG5FQAxglPt59ZBetdcVuQMKoviXqCA9s"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

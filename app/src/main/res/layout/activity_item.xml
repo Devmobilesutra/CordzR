@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sapl.retailerorderingmsdpharma.activities.ActivityItem">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:id="@+id/rel_edt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toolbar"
+            android:background="@color/white"
+            android:paddingTop="@dimen/dp5">
+
+            <com.sapl.retailerorderingmsdpharma.customView.CustomEditTextMedium
+                android:id="@+id/edt_search_distributor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="@dimen/dp16"
+                android:layout_marginLeft="@dimen/page_margin"
+                android:layout_marginRight="@dimen/page_margin"
+                android:background="@drawable/border_background"
+                android:drawableRight="@android:drawable/ic_menu_search"
+                android:hint="@string/search_Item" />
+        </RelativeLayout>
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/rel_edt"
+            android:layout_above="@+id/btn_lin"
+            android:background="@color/grey_200">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dp5"
+                android:layout_marginRight="@dimen/dp5"
+                android:background="@color/grey_200"
+                android:paddingTop="@dimen/dp10" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btn_lin"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp50"
+            android:layout_alignParentBottom="true"
+
+            android:background="@color/heading_background"
+            android:weightSum="3"
+
+            >
+
+            <com.sapl.retailerorderingmsdpharma.customView.CustomButtonRegular
+                android:id="@+id/txt_bill_offer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Bill Offer"
+                android:textColor="@color/black"
+
+                />
+
+            <com.sapl.retailerorderingmsdpharma.customView.CustomTextViewMedium
+                android:id="@+id/txt_bill_price"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Rs 0.0"
+                android:textColor="@color/black" />
+
+            <com.sapl.retailerorderingmsdpharma.customView.CustomButtonRegular
+                android:id="@+id/txt_order_preview"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Preview Order"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>

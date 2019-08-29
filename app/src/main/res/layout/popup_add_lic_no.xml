@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:padding="@dimen/dp16"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_background"
+        android:layout_margin="@dimen/dp5">
+
+    <RelativeLayout
+        android:layout_margin="@dimen/dp10"
+        android:id="@+id/rel_toolbar_signing"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include
+            android:id="@+id/toolbar_signing"
+            layout="@layout/toolbar_signing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/rel_lic_no"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rel_gst"
+        android:padding="@dimen/dp5"
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_weight="7"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/btn_lic"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp40"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:maxHeight="@dimen/dp40"
+            android:src="@drawable/licence_number"
+            android:tint="@color/heading_background" />
+
+        <com.sapl.retailerorderingmsdpharma.customView.CustomEditTextMedium
+            android:id="@+id/edt_licence_no"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="5.5"
+            android:hint="@string/enter_retailer_licence_no"
+            android:outlineProvider="none"
+            android:padding="@dimen/dp5"
+            android:textColor="@color/blue_900"
+            android:textSize="@dimen/sp16" />
+
+        <com.sapl.retailerorderingmsdpharma.customView.CustomTextViewMedium
+            android:id="@+id/txt_cmpl_lic_no"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.5"
+            android:outlineProvider="none"
+            android:text="@string/star"
+            android:padding="@dimen/dp5"
+            android:textColor="@color/red"
+            android:textSize="@dimen/sp16" />
+    </LinearLayout>
+
+    <com.sapl.retailerorderingmsdpharma.customView.CustomUnderLine
+        android:padding="@dimen/dp5"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp16"
+        android:paddingBottom="@dimen/dp16"
+        android:layout_weight="2"
+        android:orientation="horizontal">
+
+        <com.sapl.retailerorderingmsdpharma.customView.CustomButtonRegular
+            android:id="@+id/btn_cancel"
+            android:layout_marginLeft="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/cancel"
+            android:textColor="@color/white"
+            android:textSize="@dimen/card_text_size" />
+
+        <com.sapl.retailerorderingmsdpharma.customView.CustomButtonRegular
+            android:id="@+id/btn_submit"
+            android:layout_marginLeft="@dimen/dp5"
+            android:layout_marginRight="@dimen/dp10"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/submit"
+            android:textColor="@color/white"
+            android:textSize="@dimen/card_text_size" />
+    </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

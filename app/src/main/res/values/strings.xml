@@ -1,0 +1,105 @@
+<resources>
+    <string name="app_name">CORDZ-R</string>
+    <string name="sign_in">SIGN IN</string>
+    <string name="cmpny_nme">Company Name</string>
+    <string name="sign_up">Registration</string>
+    <string name="enter_user_name">Enter User Name</string>
+    <string name="enter_client_ID">Enter Client ID</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="forgot_password">Forgot Password ?</string>
+    <string name="sign_up_link">Don\'t have an account? <b>Sign up</b> Here!</string>
+    <string name="sign_in_link">Already have an account? <b><i>Sign in</i></b> </string>
+    <string name="login">Login</string>
+    <string name="delivered">Delivered</string>
+
+    <string name="forgot_password_title">Forgot Password</string>
+    <string name="enter_registered_no">Enter Retailer Registered Number</string>
+    <string name="enter_new_password">Enter New Password</string>
+
+    <string name="enter_shop_name">Shop Name</string>
+    <string name="enter_retailer_owner_name">Retailer\'s Owner Name</string>
+    <string name="enter_contact_no">Contact Number</string>
+    <string name="enter_retailer_owner_email">Retailer\'s Email Address</string>
+    <string name="next">Next</string>
+
+    <string name="enter_retailer_address">Enter Retailer Address</string>
+    <string name="enter_retailer_area">Enter Retailer Area</string>
+    <string name="enter_retailer_city">Enter Retailer City</string>
+    <string name="enter_retailer_district">Enter Retailer District</string>
+    <string name="enter_retailer_state">Enter Retailer State</string>
+    <string name="enter_retailer_pin_code">Enter Retailer Pin Code</string>
+    <string name="enter_retailer_shop_location">Shop Location</string>
+
+    <string name="enter_no_for_registration">Mob No. For Registration</string>
+    <string name="enter_retailer_gst_no">Retailer GST Number</string>
+    <string name="enter_retailer_licence_no">Licence Number</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="add_more_lic_no">Add More Licence Number</string>
+
+
+    <string name="cancel">Cancel</string>
+    <string name="submit">Submit</string>
+
+    <string name="resend">Resend</string>
+    <string name="varification_code">Varification Code</string>
+    <string name="enter_varification_code">Enter varification Code</string>
+    <string name="varification_warning">Please type the varification code send to</string>
+
+    <string name="order_booking">Order Booking</string>
+    <string name="order_status">Order Status</string>
+    <string name="resource_page">Resource Page</string>
+    <string name="update_profile">Update Profile</string>
+
+    <string name="Exit">Exit</string>
+
+   <!-- <string name="search_distributor">Search Distributor</string>
+    <string name="search_group">Search Group</string>
+    <string name="search_sub_group">Search Item_Group</string>
+    <string name="search_Brand">Search Brand</string>
+    <string name="search_Item">Search Item</string>-->
+
+    <string name="search_distributor">Search...</string>
+    <string name="search_group">Search...</string>
+    <string name="search_sub_group">Search...</string>
+    <string name="search_Brand">Search...</string>
+    <string name="search_Item">Search...</string>
+
+
+    <string name="star">*</string>
+    <string name="save_to_cart">Add to cart</string>
+    <string name="preview_order">Preview Order</string>
+
+    <string name="rupee_sign">₹ </string>
+    <string name="submit_order">Submit Order</string>
+    <string name="free_bottel">Free Btl</string>
+    <string name="free_case">Free CS</string>
+    <string name="update_order">Update Order</string>
+    <string name="case_label">Case</string>
+    <string name="bottle">Bottle</string>
+    <string name="update">Update</string>
+    <string name="shop">Shop</string>
+    <string name="calender">Calender</string>
+    <string name="shop_calender"><![CDATA[Shop & Calender]]></string>
+    <string name="dialog_header">Order Placed Successfully!</string>
+
+
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_menus">ActivityMenus</string>
+    <string name="a">Open navigation drawer</string>
+    <string name="b">Close navigation drawer</string>
+
+    <string name="open">Open navigation drawer</string>
+    <string name="close">Close navigation drawer</string>
+
+    <string name="do_you_want_logout">"Do you want to logout?"</string>
+    <string name="Logout">Logout</string>
+
+
+    <string name="Close_Application">Close Application..!</string>
+    <string name="do_you_want_exit">"Do you want to exit?"</string>
+    <string name="cart">"There are no Items in Cart"</string>
+    <string name="ok">"Ok"</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+</resources>

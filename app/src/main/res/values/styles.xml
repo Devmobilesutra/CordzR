@@ -1,0 +1,27 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/blue_grey_400</item>
+        <item name="colorPrimaryDark">@color/blue_grey_400</item>
+        <item name="colorAccent">@color/blue_grey_400</item>
+    </style>
+
+    <style name="SCBSwitch" >
+        <!-- active thumb & track color (30% transparency) -->
+        <item name="colorControlActivated">@color/white</item>
+
+        <!-- inactive thumb color -->
+        <item name="colorSwitchThumbNormal">@color/green</item>
+
+        <!-- inactive track color (30% transparency) -->
+        <item name="android:colorForeground">@color/red</item>
+    </style>
+
+    <style name="BaseAppTheme">
+        ...
+        <item name="android:colorControlActivated" tools:targetApi="lollipop">@color/white</item>
+    </style>
+
+</resources>

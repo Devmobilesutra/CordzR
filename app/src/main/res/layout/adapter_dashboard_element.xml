@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <RelativeLayout
+        android:id="@+id/card_order_booking"
+        android:layout_marginTop="@dimen/card_top"
+        android:layout_below="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/card_height"
+        android:background="@color/gray">
+
+        <ImageView
+            android:id="@+id/img_name"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_marginLeft="@dimen/page_margin"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ic_launcher"
+            />
+
+        <com.sapl.retailerorderingmsdpharma.customView.CustomTextViewMedium
+            android:id="@+id/txt_element_title"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/img_name"
+            android:layout_marginLeft="@dimen/page_margin"
+            android:textSize="@dimen/card_text_size"
+            android:text="Element Title"
+            android:layout_width="wrap_content"
+            android:textColor="@color/white"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center_horizontal" />
+    </RelativeLayout>
+
+</RelativeLayout>

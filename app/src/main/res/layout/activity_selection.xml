@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TabHost xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/tools"
+    android:id="@android:id/tabhost"
+    android:theme="@style/AppTheme"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent">
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+
+
+      <!--  <android.support.design.widget.AppBarLayout
+            android:id="@+id/appbarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.oshi.libsearchtoolbar.SearchAnimationToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:subtitle="@string/subtitle_activity_only"
+                app:subtitleTextColor="@color/colorAccent"
+                app:title="@string/activity_example"
+                />
+
+        </android.support.design.widget.AppBarLayout>
+        -->
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+
+            android:background="@color/grey_300"
+            android:visibility="visible"
+            android:elevation="@dimen/dp3"
+
+            />
+        <include
+            android:layout_marginTop="@dimen/dp3"
+            android:id="@+id/toolbar_signing"
+            layout="@layout/toolbar_selection_with_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true" />
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+
+            android:background="@color/grey_300"
+            android:visibility="visible"
+            android:elevation="@dimen/dp3"
+
+            />
+
+        <TabWidget
+            android:id="@android:id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:tabIndicatorColor="@color/black"
+            fab:ignore="MissingPrefix" />
+
+        <FrameLayout
+            android:id="@android:id/tabcontent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+             />
+
+        <android.support.v7.widget.RecyclerView
+
+            android:paddingTop="@dimen/dp10"
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp10"
+            />
+
+    </LinearLayout>
+
+
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="60dp"
+        android:layout_marginRight="20dp"
+
+        >
+
+       <!-- <com.sapl.retailerorderingmsdpharma.customView.CircularTextView
+
+            android:id="@+id/clearFilter"
+            android:layout_width="@dimen/dp60"
+            android:layout_height="@dimen/dp60"
+            android:layout_centerHorizontal="true"
+            android:layout_toLeftOf="@+id/txt_lable2"
+            android:gravity="center"
+            android:text="Apply Filter"
+            />
+        -->
+
+
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/clearFilter"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@android:color/transparent"
+            android:visibility="gone"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Apply filter"
+            android:elevation="16dp"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/dp10"
+            android:visibility="gone"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </FrameLayout>
+
+
+</TabHost>

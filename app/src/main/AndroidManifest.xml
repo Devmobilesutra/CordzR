@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sapl.retailerorderingmsdpharma">
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-feature android:name="android.hardware.location.gps" />
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!--
+    uses-permission android:name=".permission.C2D_MESSAGE" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" /
+    -->
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <application
+        android:name=".activities.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/msd_logo"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        android:name="android.support.multidex.MultiDexApplication">
+        <activity
+            android:name=".activities.ActivityLogin"
+            android:windowSoftInputMode="stateAlwaysHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activities.SplashScreen" />
+        <activity android:name=".activities.ActivityDashBoard" />
+        <activity
+            android:name=".activities.ActivityDistributorList"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".activities.ActivityShowOrderList" />
+        <activity
+            android:name=".activities.ActivityRegisterOne"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activities.ActivityRegisterTwo"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activities.ActivityRegisterThree"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activities.ActivityForgotPassword"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activities.ActivityVarificationCode"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activities.ActivitySelection"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".activities.GroupActivity" />
+        <activity android:name=".activities.ActivitySubGroup" />
+        <activity android:name=".activities.ActivityBrand" />
+        <activity android:name=".activities.ActivityItem" />
+
+        <service android:name=".FirebaseMessage.FCMMessaging">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".FirebaseMessage.FirebaseService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <receiver
+            android:name=".confiq.MyBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".activities.ActivityPreviewOrder"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:name=".activities.ActivityStatusTabs" />
+        <activity android:name=".activities.AcitivityAllStatusList" />
+        <activity android:name=".activities.ActivityPendingStatus" />
+        <activity android:name=".activities.ActivityAcceptedStatus" />
+        <activity android:name=".activities.ActivityRejectedStatus" />
+        <activity android:name=".activities.ActivityItemDetails" />
+        <activity android:name=".activities.ActivityItemDetailsNew" />
+        <activity android:name=".activities.ActivityNewPassword"></activity>
+    </application>
+
+</manifest>

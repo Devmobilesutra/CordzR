@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background_border"
+    app:cardElevation="@dimen/dp15"
+android:layout_marginTop="@dimen/dp5"
+    android:layout_marginBottom="@dimen/dp18"
+
+    >
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible">
+
+        <RelativeLayout
+            android:id="@+id/dash_rr"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+            <ImageView
+                android:id="@+id/img_menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/page_margin"
+                android:src="@drawable/menu_new"
+                android:tint="@color/black" />
+
+            <com.sapl.retailerorderingmsdpharma.customView.CustomTextViewMedium
+                android:id="@+id/txt_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:gravity="center_horizontal"
+                android:text="@string/sign_in"
+                android:textColor="@color/white"
+                android:textSize="@dimen/card_text_size"
+                android:visibility="visible" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/img_cart"
+            android:layout_width="@dimen/dp28"
+            android:layout_height="@dimen/dp28"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp20"
+            android:src="@drawable/add_to_cart"
+
+            />
+
+        <com.sapl.retailerorderingmsdpharma.customView.CircularTextView
+            android:id="@+id/txt_no_of_product_taken"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp20"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/dp10"
+            android:layout_marginTop="@dimen/dp10"
+            android:gravity="center"
+            android:text="0"
+            android:textSize="@dimen/dp12" />
+
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
