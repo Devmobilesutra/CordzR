@@ -217,7 +217,8 @@
                 android:text="@string/login"
                 android:textColor="@color/white"
                 android:textSize="@dimen/card_text_size"
-                android:background="@color/grey_700"/>
+
+                android:background="@color/maroon"/>
 
             <com.sapl.retailerorderingmsdpharma.customView.CustomTextViewRegular
                 android:id="@+id/txt_sign_up_link"

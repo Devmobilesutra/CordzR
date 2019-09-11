@@ -85,7 +85,7 @@ public class ActivityLogin extends AppCompatActivity/* implements LocationListen
     CustomTextViewMedium txt_title;
     Context context;
     CircularTextView txt_no_of_product_taken;
-    ImageView img_shop_logo,img_menu,img_cart;
+    ImageView img_shop_logo,img_back,img_cart;
     static String LOG_TAG = "ActivityLogin";
 
     private double fusedLatitude = 0.0;
@@ -167,8 +167,8 @@ public class ActivityLogin extends AppCompatActivity/* implements LocationListen
 
 
     public void initComponants() {
-        img_menu = findViewById(R.id.img_menu);
-        img_menu.setVisibility(View.GONE);
+        img_back = findViewById(R.id.img_back);
+        img_back.setVisibility(View.GONE);
 
         img_cart = findViewById(R.id.img_cart);
         img_cart.setVisibility(View.GONE);
@@ -187,6 +187,9 @@ public class ActivityLogin extends AppCompatActivity/* implements LocationListen
         edt_password.setTransformationMethod(PasswordTransformationMethod.getInstance());
 
         btn_login = findViewById(R.id.btn_login);
+
+     //   btn_login.setTextColor((Color.parseColor(MyApplication.get_session(MyApplication.SESSION_Accent_Color))));
+//        btn_login.setBackgroundColor((Color.parseColor(MyApplication.get_session(MyApplication.SESSION_THEME_DARK_COLOR))));
 
         txt_sign_up_link = findViewById(R.id.txt_sign_up_link);
         txt_forgot_password = findViewById(R.id.txt_forgot_password);

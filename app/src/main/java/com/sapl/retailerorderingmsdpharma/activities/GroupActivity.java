@@ -14,6 +14,8 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.sapl.retailerorderingmsdpharma.MyDatabase.TABLE_PITEM;
@@ -31,7 +33,7 @@ import java.util.List;
 public class GroupActivity extends AppCompatActivity {
 
     public static String LOG_TAG = "GroupActivity";
-    public static CustomEditTextMedium edt_search_distributor;
+    public static EditText edt_search_distributor;
     Context context = null;
     List<DivisionModel> groupList1 = null, searchList = null;
    public static Animation animBounce ;
@@ -46,6 +48,10 @@ public class GroupActivity extends AppCompatActivity {
         initComponants();
         initComponantListner();
         bindData();
+        edt_search_distributor.requestFocus();
+        edt_search_distributor.requestFocus();
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(edt_search_distributor, InputMethodManager.SHOW_IMPLICIT);
 
     }
 
@@ -64,6 +70,10 @@ public class GroupActivity extends AppCompatActivity {
 
     public static void showSearchEdit() {
         edt_search_distributor.setVisibility(View.VISIBLE);
+
+        edt_search_distributor.setPadding(10,0,0,0);
+        edt_search_distributor.requestFocus();
+
         /*animBounce = AnimationUtils.loadAnimation(this,R.anim.fade_in_call);
         edt_search_distributor.setAnimation(animBounce);*/
     }

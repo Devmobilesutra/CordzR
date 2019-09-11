@@ -639,6 +639,44 @@ public class TABLE_TEMP_ORDER_DETAILS {
     }
 
 
+
+    public static boolean istrue(String orderId) {
+
+        MyApplication.logi(LOG_TAG, "in istrue");
+        int count;
+        boolean resp =false ;
+        MyApplication.logi(LOG_TAG, "in istrue()" + orderId);
+        SQLiteDatabase db = MyApplication.db.getWritableDatabase();
+        //String query = "SELECT * from "+NAME+" where "+"PriceListID" +" =" + dist_id+"";
+        // String query = "SELECT DISTINCT SalesRate from PriceListDetails where ItemID =" + item_id;
+        // String query =   "select SalesRate from PriceListDetails where ItemID=item_id and PriceListID=dist_id";
+
+        String query = "select * from TempOrderDetails where TempOrderDetails.OrderID = 'orderId'and (TempOrderDetails.LargeUnit > 0 or TempOrderDetails.SmallUnit > 0)";
+        MyApplication.logi("", "In getSalesRate query :" + query);
+        Cursor c = db.rawQuery(query, null);
+        count = c.getCount();
+        MyApplication.logi(LOG_TAG, "COUNT OF istrue IS-->" + count);
+        if (count > 0) {
+            resp= true;
+         //   c.moveToFirst();
+            /*do {
+                try {
+                    resp = Integer.parseInt(c.getString(c.getColumnIndexOrThrow("SalesRate")));
+                } catch (NumberFormatException e) {
+                    e.printStackTrace();
+                }
+                MyApplication.logi(LOG_TAG, "RESPPPPP-->" + resp);
+            } while (c.moveToNext());*/
+        }
+        else{
+            resp=false;
+        }
+
+        return resp;
+
+    }
+
+
     public static void delete_table() {
 
         SQLiteDatabase db = MyApplication.db.getWritableDatabase();

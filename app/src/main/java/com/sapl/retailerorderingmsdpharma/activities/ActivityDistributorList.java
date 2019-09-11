@@ -40,7 +40,7 @@ public class ActivityDistributorList extends AppCompatActivity implements Distri
     CustomTextViewMedium txt_title;
     List<DistributorModel> distributorList1 = null, searchList = null;
     CircularTextView txt_no_of_product_taken;
-    ImageView img_cart, img_menu;
+    ImageView img_cart, img_back;
     RelativeLayout dash_rr,rr2;
 
 
@@ -86,9 +86,9 @@ public class ActivityDistributorList extends AppCompatActivity implements Distri
     }
 
     public void initComponantListner() {
-        img_menu = findViewById(R.id.img_menu);
-        img_menu.setVisibility(View.GONE);
-        img_menu.setOnClickListener(new View.OnClickListener() {
+        img_back = findViewById(R.id.img_back);
+        img_back.setVisibility(View.VISIBLE);
+        img_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Toast.makeText(context, "This feature is coming soon", Toast.LENGTH_SHORT).show();
@@ -112,6 +112,16 @@ public class ActivityDistributorList extends AppCompatActivity implements Distri
             }
         });
 
+
+
+        img_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+     Intent intent = new Intent(ActivityDistributorList.this, ActivityDashBoard.class);
+                    startActivity(intent);
+
+            }
+        });
 
         edt_search_distributor.addTextChangedListener(new TextWatcher() {
             @Override

@@ -20,6 +20,16 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_menu"
-        app:menu="@menu/activity_menu_drawer" />
+        app:menu="@menu/activity_menu_drawer" >
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/nav_Logout"
+            android:background="@drawable/side_nav_bar"
+            android:text="@string/Logout"
+            android:textColor="@color/white"
+            android:layout_gravity="bottom"/>
+    </android.support.design.widget.NavigationView>
+
 
 </android.support.v4.widget.DrawerLayout>

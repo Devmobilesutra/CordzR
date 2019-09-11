@@ -1,17 +1,13 @@
 package com.sapl.retailerorderingmsdpharma.activities;
 
-
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -25,26 +21,19 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.sapl.retailerorderingmsdpharma.MyDatabase.TABLE_ORDER_DETAILS;
-import com.sapl.retailerorderingmsdpharma.MyDatabase.TABLE_ORDER_STATUS;
 import com.sapl.retailerorderingmsdpharma.MyDatabase.TABLE_RETAILER_ORDER_MASTER;
 import com.sapl.retailerorderingmsdpharma.R;
-import com.sapl.retailerorderingmsdpharma.ServerCall.MyListener;
 import com.sapl.retailerorderingmsdpharma.customView.CustomTextViewMedium;
 import com.sapl.retailerorderingmsdpharma.customView.CustomUnderLine;
 import com.sapl.retailerorderingmsdpharma.models.OrderDeliveryStatusModel;
-import com.sapl.retailerorderingmsdpharma.models.OrderDetailModel;
 import com.sapl.retailerorderingmsdpharma.observer.MilkLtrsObservable;
 import com.sapl.retailerorderingmsdpharma.observer.MilkLtrsObserver;
 
 import java.util.ArrayList;
 import java.util.List;
 
-//ACTIVITY WHERE ALL THE STATUS LIST IS DISPLAYED..i.e accepted,rejected,pending
-public class AcitivityAllStatusList extends AppCompatActivity implements MilkLtrsObserver
-{
+public class ActivityDeleveredStatus extends AppCompatActivity implements MilkLtrsObserver {
 
 
     public static String LOG_TAG = "AcitivityAllStatusList";
@@ -54,17 +43,13 @@ public class AcitivityAllStatusList extends AppCompatActivity implements MilkLtr
     CustomTextViewMedium txt_filter_lable;
     ImageView img_filter;
     List<OrderDeliveryStatusModel> orderStatusList = new ArrayList<>();
-    List<OrderDetailModel> orderStatusList1 = new ArrayList<>();
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_all_status_list);
+        setContentView(R.layout.activity_delevered_status);
         context = this;
         registerObservers();
-
 
         initComponants();
         initComponantListner();
@@ -73,20 +58,20 @@ public class AcitivityAllStatusList extends AppCompatActivity implements MilkLtr
     }
 
 
-
     private void initComponants() {
         img_filter = (ImageView) findViewById(R.id.img_filter);
         txt_filter_lable = findViewById(R.id.txt_filter_lable);
         txt_filter_lable.setTextColor(Color.parseColor(MyApplication.get_session(MyApplication.SESSION_THEME_DARK_COLOR)));
-      //  recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        //  recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
     }
 
-    public void initComponantListner(){
+
+    public void initComponantListner() {
         img_filter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 View v1 = img_filter;
-                PopupMenu popup = new PopupMenu(AcitivityAllStatusList.this, v1);
+                PopupMenu popup = new PopupMenu(ActivityDeleveredStatus.this, v1);
                 popup.getMenuInflater().inflate(R.menu.menu_filter, popup.getMenu());
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
 
@@ -96,22 +81,30 @@ public class AcitivityAllStatusList extends AppCompatActivity implements MilkLtr
                         //orderFilterList = new ArrayList<>();
 
                         if (item.toString().equals(getResources().getString(R.string.shop))) {
-                            //Toast.makeText(getApplicationContext(),"U SELECTED "+ item.toString(),Toast.LENGTH_LONG).show();
-                            orderStatusList =  TABLE_RETAILER_ORDER_MASTER.getOrderStatusListAsPerShop();
+                            // Toast.makeText(getApplicationContext(), "U SELECTES " + item.toString(), Toast.LENGTH_LONG).show();
+
+
+                            orderStatusList = TABLE_RETAILER_ORDER_MASTER.getStatusListAsPerShop("3");
                             setSelectedData();
+
                             //orderFilterList = orderShopList;
-                          //  initBindData(orderShopList);
+                            //  initBindData(orderShopList);
                         }
                         if (item.toString().equals(getResources().getString(R.string.calender))) {
-                            //Toast.makeText(getApplicationContext(),"U SELECTED"+ item.toString(),Toast.LENGTH_LONG).show();
-                            orderStatusList  =TABLE_RETAILER_ORDER_MASTER.getOrderStatusListAsPerCalender();
+                            // Toast.makeText(getApplicationContext(), "U SELECTES " + item.toString(), Toast.LENGTH_LONG).show();
+
+                            orderStatusList = TABLE_RETAILER_ORDER_MASTER.getStatusListAsPerCalender("3");
+                            setSelectedData();
 
                         }
                         if (item.toString().equals(getResources().getString(R.string.shop_calender))) {
-                            //Toast.makeText(getApplicationContext(),"U SELECTED "+ item.toString(),Toast.LENGTH_LONG).show();
-                        orderStatusList  =TABLE_RETAILER_ORDER_MASTER.getOrderStatusListAsPerShopAndCalender();
+                            // Toast.makeText(getApplicationContext(), "U SELECTES " + item.toString(), Toast.LENGTH_LONG).show();
+
+                            orderStatusList = TABLE_RETAILER_ORDER_MASTER.getStatusListAsPerShopAndCalender("3");
+                            setSelectedData();
+
                         }
-                        txt_filter_lable.setText(item.toString()+"");
+                        txt_filter_lable.setText(item.toString() + "");
                         return true;
                     }
                 });
@@ -120,31 +113,18 @@ public class AcitivityAllStatusList extends AppCompatActivity implements MilkLtr
         });
     }
 
-
-
-
     public void bindData() {
 
         MyApplication.logi("bindData() ", "***************");
 
-      //  orderStatusList1 = TABLE_ORDER_DETAILS.getOrderStatusList1();
-        orderStatusList = TABLE_RETAILER_ORDER_MASTER.getOrderStatusList();
+        orderStatusList = TABLE_RETAILER_ORDER_MASTER.getOrderStatusList_new("5");
         MyApplication.logi(LOG_TAG, "before count orderStatusList");
 
-        if(orderStatusList.equals(null)){
-            MyApplication.logi(LOG_TAG,"IN NULL");
-            MyApplication.showDialog(context,"No orders placed yet..");
-
-        }
-        else {
-            setSelectedData();
-        }
-
+        setSelectedData();
     }
 
 
-
-    public  void setSelectedData(){
+    public void setSelectedData() {
         if (orderStatusList != null && orderStatusList.size() > 0) {
             RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
             LinearLayoutManager mLayoutManager = new LinearLayoutManager(context);
@@ -163,11 +143,12 @@ public class AcitivityAllStatusList extends AppCompatActivity implements MilkLtr
 
             recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-            RecyclerAdapter adapter = new RecyclerAdapter(context, orderStatusList);
+          RecyclerAdapter adapter = new RecyclerAdapter(context, orderStatusList);
             recyclerView.setAdapter(adapter);
 
         }
     }
+
 
     @Override
     public void setMilkLtrs(String cowLtrs, String buffellowLtrs) {
@@ -176,7 +157,6 @@ public class AcitivityAllStatusList extends AppCompatActivity implements MilkLtr
 
     @Override
     public void setValues() {
-        MyApplication.logi(LOG_TAG, "In setValues");
         bindData();
     }
 
@@ -206,7 +186,7 @@ public class AcitivityAllStatusList extends AppCompatActivity implements MilkLtr
             ((RecyclerAdapter.MyViewHolder) holder).txt_name.setText(model.getDistributorId());
 
 
-            ((MyViewHolder) holder).img_info.setOnClickListener(new View.OnClickListener() {
+            ((RecyclerAdapter.MyViewHolder) holder).img_info.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
@@ -219,77 +199,43 @@ public class AcitivityAllStatusList extends AppCompatActivity implements MilkLtr
             });
 
 
-            ((MyViewHolder) holder).img_call.setOnClickListener(new View.OnClickListener() {
+            ((RecyclerAdapter.MyViewHolder) holder).img_call.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     display_calling_alert(model.getContact_no_land(), model.getContact_no_mob());
                 }
             });
 
+           /* if (model.getOrderStatus().contains("1")) {
+                ((RecyclerAdapter.MyViewHolder) holder).txt_booked_status.setText("Pending");
+                ((RecyclerAdapter.MyViewHolder) holder).txt_booked_status.setBackgroundColor(getResources().getColor(R.color.orange_700));
+                ((RecyclerAdapter.MyViewHolder) holder).underLine.setBackgroundColor(getResources().getColor(R.color.orange_700));
+            } else if (model.getOrderStatus().contains("2")) {
+                ((RecyclerAdapter.MyViewHolder) holder).txt_booked_status.setText("Delivered");
+                ((RecyclerAdapter.MyViewHolder) holder).txt_booked_status.setBackgroundColor(getResources().getColor(R.color.green));
+                ((RecyclerAdapter.MyViewHolder) holder).underLine.setBackgroundColor(getResources().getColor(R.color.green));
+            } else if (model.getOrderStatus().contains("3")) {
+                ((RecyclerAdapter.MyViewHolder) holder).txt_booked_status.setText("Rejected");
+                ((RecyclerAdapter.MyViewHolder) holder).txt_booked_status.setBackgroundColor(getResources().getColor(R.color.red_400));
+                ((RecyclerAdapter.MyViewHolder) holder).underLine.setBackgroundColor(getResources().getColor(R.color.red_400));
+            } else if (model.getOrderStatus().contains("4")) {
+                ((RecyclerAdapter.MyViewHolder) holder).txt_booked_status.setText("Partial Acceptance");
+                ((RecyclerAdapter.MyViewHolder) holder).txt_booked_status.setBackgroundColor(getResources().getColor(R.color.orange_700));
+                ((RecyclerAdapter.MyViewHolder) holder).underLine.setBackgroundColor(getResources().getColor(R.color.orange_700));
 
+            }*/
 
-/*
-
-  ((MyViewHolder) holder).img_name.clearAnimation();
-        ((MyViewHolder) holder).img_name.clearFocus();
-        ((MyViewHolder) holder).img_name.clearColorFilter();
-
-        Glide.with(context).load(context.getResources().getIdentifier(model.getSelectionImg(),
-                "drawable", context.getPackageName()))
-                .asBitmap().centerCrop().into(new BitmapImageViewTarget((MyViewHolder)holder.) {
-            @Override
-            protected void setResource(Bitmap resource) {
-                RoundedBitmapDrawable circularBitmapDrawable =
-                        RoundedBitmapDrawableFactory.create(context.getResources(), resource);
-                circularBitmapDrawable.setCircular(true);
-                holder.img_selection.setImageDrawable(circularBitmapDrawable);
-            }
-        });
-
-
-*/
-
+            //((MyViewHolder) holder).txt_booked_status.setText(model.getOrderStatus());
 
             String date = model.getOrderDate();
-            MyApplication.logi(LOG_TAG, "original date --->" + date);
             String[] array = date.split("T");
             String date1 = array[0];
             String time = array[1];
 
-
-            MyApplication.logi(LOG_TAG, "DATE1 --->" + date1);
-            MyApplication.logi(LOG_TAG, "time --->" + time);
             ((RecyclerAdapter.MyViewHolder) holder).txt_date.setText(date1);
-            //  ((RecyclerAdapter.MyViewHolder) holder).txt_status_with_time.setText("Processing 1.30 pm" );
+            ((RecyclerAdapter.MyViewHolder) holder).txt_status_with_time.setText("Delivered");
             ((RecyclerAdapter.MyViewHolder) holder).txt_rupees.setText(model.getAmount());
             // ((MyViewHolder) holder).txt_card_number.setText(model.getCart_count());
-
-
-            if (model.getOrderStatus().contains("1")) {
-                ((RecyclerAdapter.MyViewHolder) holder).txt_status_with_time.setText("Processing " + time);
-                // ((RecyclerAdapter.MyViewHolder) holder).txt_booked_status.setBackgroundColor(getResources().getColor(R.color.orange_700));
-                // ((RecyclerAdapter.MyViewHolder) holder).underLine.setBackgroundColor(getResources().getColor(R.color.orange_700));
-            } else if (model.getOrderStatus().contains("2")) {
-                ((RecyclerAdapter.MyViewHolder) holder).txt_status_with_time.setText("Accepted " + time);
-                //  ((RecyclerAdapter.MyViewHolder) holder).txt_booked_status.setBackgroundColor(getResources().getColor(R.color.green));
-                // ((RecyclerAdapter.MyViewHolder) holder).underLine.setBackgroundColor(getResources().getColor(R.color.green));
-            } else if (model.getOrderStatus().contains("3")) {
-                ((RecyclerAdapter.MyViewHolder) holder).txt_status_with_time.setText("Rejected");
-                // ((RecyclerAdapter.MyViewHolder) holder).txt_booked_status.setBackgroundColor(getResources().getColor(R.color.red_400));
-                // ((RecyclerAdapter.MyViewHolder) holder).underLine.setBackgroundColor(getResources().getColor(R.color.red_400));
-            } else if (model.getOrderStatus().contains("4")) {
-                ((RecyclerAdapter.MyViewHolder) holder).txt_status_with_time.setText("Partial Acceptance");
-                //   ((RecyclerAdapter.MyViewHolder) holder).txt_booked_status.setBackgroundColor(getResources().getColor(R.color.orange_700));
-                //   ((RecyclerAdapter.MyViewHolder) holder).underLine.setBackgroundColor(getResources().getColor(R.color.orange_700));
-
-            } else if (model.getOrderStatus().contains("5")) {
-                ((RecyclerAdapter.MyViewHolder) holder).txt_status_with_time.setText("Delivered");
-                //   ((RecyclerAdapter.MyViewHolder) holder).txt_booked_status.setBackgroundColor(getResources().getColor(R.color.orange_700));
-                //   ((RecyclerAdapter.MyViewHolder) holder).underLine.setBackgroundColor(getResources().getColor(R.color.orange_700));
-
-            }
-
-            //((MyViewHolder) holder).txt_booked_status.setText(model.getOrderStatus());
 
             int count_of_cart = TABLE_ORDER_DETAILS.getCountForSpecificOrderID(model.getOrderID());
             ((RecyclerAdapter.MyViewHolder) holder).txt_card_number.setText(count_of_cart + "");
@@ -308,8 +254,8 @@ public class AcitivityAllStatusList extends AppCompatActivity implements MilkLtr
             public ImageView img_vechle;
             public CustomTextViewMedium processing, delivered;
             CustomTextViewMedium txt_name, txt_booked_status, txt_status_with_time;
-            public ImageView img_name, img_call, img_info;
             CustomUnderLine underLine;
+            public ImageView img_name, img_call, img_info;
 
             public MyViewHolder(View view) {
                 super(view);
@@ -320,7 +266,6 @@ public class AcitivityAllStatusList extends AppCompatActivity implements MilkLtr
                 txt_status_with_time = view.findViewById(R.id.txt_status_with_time);
                 txt_status_with_time.setTextColor(Color.parseColor(MyApplication.get_session(MyApplication.SESSION_THEME_DARK_COLOR)));
 
-                img_name = (ImageView) view.findViewById(R.id.img_name);
 
                 txt_name = view.findViewById(R.id.txt_shop_name);
                 txt_name.setTextColor(Color.parseColor(MyApplication.get_session(MyApplication.SESSION_THEME_DARK_COLOR)));
@@ -351,7 +296,7 @@ public class AcitivityAllStatusList extends AppCompatActivity implements MilkLtr
 
                 /// processing.setBackground(context.getResources().getDrawable(R.drawable.border_background_processing));
 
-                //  img_name = (ImageView) view.findViewById(R.id.img_name);
+                img_name = (ImageView) view.findViewById(R.id.img_name);
                 img_vechle = (ImageView) view.findViewById(R.id.img_vechle);
 
                 view.setOnClickListener(new View.OnClickListener() {
@@ -364,7 +309,7 @@ public class AcitivityAllStatusList extends AppCompatActivity implements MilkLtr
                             OrderDeliveryStatusModel model = selectionList.get(pos);
                             MyApplication.logi(LOG_TAG, "VIEW CLICKED IS-->" + model.getDistributorId() + "ORDER ID-->" + model.getOrderID());
                             MyApplication.set_session("SESSION_SELECTED_ORDERID", model.getOrderID());
-                            Intent intent = new Intent(AcitivityAllStatusList.this, ActivityItemDetails.class);
+                            Intent intent = new Intent(ActivityDeleveredStatus.this, ActivityItemDetails.class);
                             startActivity(intent);
                             /// finish();
                             overridePendingTransition(R.anim.fade_in_return, R.anim.fade_out_return);
@@ -382,6 +327,7 @@ public class AcitivityAllStatusList extends AppCompatActivity implements MilkLtr
 
         MyApplication.logi(LOG_TAG, "in back pressed");
         Intent intent = new Intent(getApplicationContext(), ActivityDashBoard.class);
+
         startActivity(intent);
         finish();
         overridePendingTransition(R.anim.fade_in_call, R.anim.fade_out_call);
@@ -400,6 +346,7 @@ public class AcitivityAllStatusList extends AppCompatActivity implements MilkLtr
 
         milkLtrsObservable.unregister(this);
     }
+
 
     public void display_calling_alert(final String landline, final String mobile) {
 

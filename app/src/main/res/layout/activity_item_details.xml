@@ -1,32 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.sapl.retailerorderingmsdpharma.activities.ActivityBrand">
-
+    android:layout_height="wrap_content"
+    android:background="@color/white">
     <RelativeLayout
         android:id="@+id/RR"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white">
 
-
-
-
-        <include
-            android:id="@+id/toolbar"
-            layout="@layout/toolbar_selection"
+       <include
+            android:id="@+id/toolbars"
+            layout="@layout/toolbars"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true" />
-
-        <RelativeLayout
+            android:layout_alignParentTop="true"
+           android:layout_marginBottom="@dimen/dp15"
+           />
+    </RelativeLayout>
+      <!--  <RelativeLayout
             android:id="@+id/rel_edt"
             android:background="@color/heading_background"
             android:paddingTop="@dimen/dp5"
-            android:layout_below="@+id/toolbar"
+            android:layout_below="@+id/toolbars"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -44,29 +40,42 @@
                 android:layout_marginRight="@dimen/page_margin"
                 android:layout_marginBottom="@dimen/dp16"
                 android:visibility="gone"/>
-        </RelativeLayout>
+        </RelativeLayout>-->
 
+    <LinearLayout
+        android:id="@+id/RR1"
+        android:layout_below="@+id/RR"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
 
+        android:layout_marginBottom="25dp">
         <android.support.v7.widget.RecyclerView
-            android:layout_below="@+id/rel_edt"
-            android:paddingTop="@dimen/dp10"
+           android:paddingTop="@dimen/dp10"
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dp10"
-            android:layout_marginRight="@dimen/dp10" />
+            android:layout_marginRight="@dimen/dp10"
 
-    </RelativeLayout>
+          />
 
-    <com.sapl.retailerorderingmsdpharma.customView.CustomButtonRegular
+    </LinearLayout>
+
+    <Button
         android:id="@+id/btn_delivered"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:text="@string/delivered"
         android:textColor="@color/white"
-        android:textSize="@dimen/card_text_size"
-        android:layout_below="@+id/RR"
-        android:visibility="gone"/>
+        android:textSize="@dimen/sp16"
+
+
+        />
+
+
 
 
 </RelativeLayout>

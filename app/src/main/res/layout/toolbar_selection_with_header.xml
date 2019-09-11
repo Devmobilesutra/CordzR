@@ -16,17 +16,13 @@
         >
 
         <ImageView
-            android:id="@+id/img_menu"
+            android:id="@+id/img_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/page_margin"
-            android:layout_marginRight="75dp"
-            android:src="@drawable/menu_new"
-            android:paddingRight="50dp"
-            android:tint="@color/black"/>
+            android:layout_centerInParent="true"
+            android:src="@drawable/back"
+            android:tint="@color/black" />
 
         <com.sapl.retailerorderingmsdpharma.customView.CustomTextViewMedium
             android:id="@+id/txt_title_with_header"
@@ -41,6 +37,7 @@
             android:text="@string/cmpny_nme"
             android:textColor="@color/black"
             android:textSize="@dimen/dp14"
+            android:textStyle="bold"
             android:visibility="visible" />
 
 
@@ -53,7 +50,7 @@
             android:layout_below="@+id/txt_no_of_product_taken"
             android:paddingLeft="3dp"
             android:text="Dist Name"
-            android:textColor="@color/gray"
+            android:textColor="@color/black"
             android:textSize="@dimen/dp12"
             android:visibility="visible"
             android:maxLength="20"
@@ -147,7 +144,9 @@
         android:layout_height="60dp"
         android:background="@drawable/border_background"
         android:hint="@string/search_Brand"
+        android:layout_marginLeft="10dp"
         android:visibility="gone"
+        android:focusable="true"
         />
 
     <ImageView

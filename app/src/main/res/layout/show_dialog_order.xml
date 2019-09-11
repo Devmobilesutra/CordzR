@@ -40,14 +40,19 @@
         android:id="@+id/tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/sp8"
+       android:layout_marginTop="8sp"
+        android:layout_marginBottom="5sp"
+        android:layout_marginLeft="@dimen/sp8"
+        android:layout_marginRight="@dimen/sp8"
         android:gravity="center_vertical|center"
         android:text="Your Order has been Placed to" />
     <com.sapl.retailerorderingmsdpharma.customView.CustomTextViewRegular
         android:id="@+id/tv_Dist_name"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/sp8"
+        android:layout_height="wrap_content" android:layout_marginTop="2sp"
+        android:layout_marginBottom="5sp"
+        android:layout_marginLeft="@dimen/sp8"
+        android:layout_marginRight="@dimen/sp8"
         android:gravity="center_vertical|center"
      />
 
@@ -55,7 +60,9 @@
         android:id="@+id/tv_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/sp8"
+        android:layout_marginBottom="5sp"
+        android:layout_marginLeft="@dimen/sp8"
+        android:layout_marginRight="@dimen/sp8"
         android:gravity="center_vertical|center"
         android:text="With Order number  " />
 
@@ -66,7 +73,9 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical|center"
         android:text="1234455"
-        android:layout_margin="@dimen/sp8"/>
+        android:layout_marginBottom="5sp"
+        android:layout_marginLeft="@dimen/sp8"
+        android:layout_marginRight="@dimen/sp8"/>
 
     <com.sapl.retailerorderingmsdpharma.customView.CustomTextViewRegular
         android:id="@+id/tv_Thankyou"
@@ -74,7 +83,9 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical|center"
         android:text="Thank you"
-        android:layout_margin="@dimen/sp8"/>
+        android:layout_marginBottom="8sp"
+        android:layout_marginLeft="@dimen/sp8"
+        android:layout_marginRight="@dimen/sp8"/>
 
 
 

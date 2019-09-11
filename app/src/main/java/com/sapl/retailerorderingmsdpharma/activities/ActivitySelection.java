@@ -53,7 +53,7 @@ public class ActivitySelection extends TabActivity {
     Context context;
     String LOG_TAG = "ActivitySelection ";
     public static CircularTextView txt_no_of_product_taken;
-    ImageView img_cart, img_menu, img_clear_filter;
+    ImageView img_cart, img_back, img_clear_filter;
     public static ImageView img_search;
     public static CustomTextViewMedium txt_title_with_header, txt_dist_name;
     TabLayout tabLayout;
@@ -172,13 +172,15 @@ public class ActivitySelection extends TabActivity {
     private void initComponantsListner() {
 
 
-        img_menu = findViewById(R.id.img_menu);
-        img_menu.setVisibility(View.GONE);
-        img_menu.setOnClickListener(new View.OnClickListener() {
+        img_back = findViewById(R.id.img_back);
+        img_back.setVisibility(View.VISIBLE);
+        img_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MyApplication.logi(LOG_TAG, "ON CLICK OF img_menu");
-                MyApplication.displayMessage(context, "This feature is coming soon...");
+                Intent intent = new Intent(context, ActivityDistributorList.class);
+                finish();
+                overridePendingTransition(R.anim.fade_in_call, R.anim.fade_out_call);
+                context.startActivity(intent);
 
             }
         });
@@ -239,7 +241,9 @@ public class ActivitySelection extends TabActivity {
             public void onClick(View v) {
 
                 MyApplication.logi(LOG_TAG, "ON CLICK OF img_search");
-               /* int abc = tabHost.getCurrentTab();
+                edt_search_distributor.setFocusable(true);
+                edt_search_distributor.setPadding(10,0,0,0);
+            /* int abc = tabHost.getCurrentTab();
                 MyApplication.logi(LOG_TAG, "ON CLICK OF img_search tabshos===" + abc);
                 if (edt_search_distributor.getVisibility() == View.VISIBLE) {
                     MyApplication.logi(LOG_TAG, "ON CLICK OF img_search  == visiblr");
@@ -284,6 +288,7 @@ public class ActivitySelection extends TabActivity {
                         MyApplication.logi(LOG_TAG, "EDT SEARCH DIST IS-->" + edt_search_distributor.getText().toString());
                     } else {
                         GroupActivity.showSearchEdit();
+                        edt_search_distributor.setFocusable(true);
 
                     }
                 } else if (getCurrentTab == 1) {
@@ -291,6 +296,7 @@ public class ActivitySelection extends TabActivity {
                         ActivitySubGroup.hideSearchEdit();
                     } else {
                         ActivitySubGroup.showSearchEdit();
+                        edt_search_distributor.setFocusable(true);
 
                     }
                 } else if (getCurrentTab == 2) {
@@ -299,6 +305,7 @@ public class ActivitySelection extends TabActivity {
 
                     } else {
                         ActivityBrand.showSearchEdit();
+                        edt_search_distributor.setFocusable(true);
 
                     }
                 } else if (getCurrentTab == 3) {
@@ -306,6 +313,7 @@ public class ActivitySelection extends TabActivity {
                         ActivityItem.hideSearchEdit();
                     } else {
                         ActivityItem.showSearchEdit();
+                        edt_search_distributor.setFocusable(true);
                     }
                 }
             }
@@ -533,6 +541,7 @@ public class ActivitySelection extends TabActivity {
         //   bindGroupData();
         //bindSubGroupData();
         edt_search_distributor = findViewById(R.id.edt_search_distributor);
+
         edt_search_distributor.setBackground(context.getResources().getDrawable(R.drawable.border_background));
         edt_search_distributor.setVisibility(View.GONE);
 

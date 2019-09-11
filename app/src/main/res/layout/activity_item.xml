@@ -31,7 +31,8 @@
                 android:layout_marginRight="@dimen/page_margin"
                 android:background="@drawable/border_background"
                 android:drawableRight="@android:drawable/ic_menu_search"
-                android:hint="@string/search_Item" />
+                android:hint="@string/search_Item"
+                android:focusable="true"/>
         </RelativeLayout>
 
         <LinearLayout

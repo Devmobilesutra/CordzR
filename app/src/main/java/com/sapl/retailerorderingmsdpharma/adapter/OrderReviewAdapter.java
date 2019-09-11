@@ -65,17 +65,20 @@ public class OrderReviewAdapter extends RecyclerView.Adapter<OrderReviewAdapter.
     public static ImageView img_edt, img_delete;
     String  ORDBOOKUOMLABEL = "",biguom = "",smalluom="";
     int ItemCount;
+    long ret11;
+    long ret12;
+    long ret1;
     public OrderReviewAdapter(Context context, List<OrderReviewModel> orderReviewList) {
         this.orderReviewList = orderReviewList;
         this.context = context;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public CustomTextViewMedium txt_product_name, txt_price_of_product,
-                txt_free_case_no, txt_free_bottle_no;
+        public CustomTextViewMedium txt_product_name, txt_price_of_product,txt_per_Rate;
+
         public CustomTextViewMedium txt_case_label, txt_bottle_label, txt_free_case_label, txt_free_bottle_label;
         public ImageView img_product;
-        public CustomEditTextMedium txt_bottle_no, txt_case_no;
+        public EditText txt_bottle_no, txt_case_no , txt_free_case_no, txt_free_bottle_no;
 
 
         public MyViewHolder(View view) {
@@ -83,6 +86,7 @@ public class OrderReviewAdapter extends RecyclerView.Adapter<OrderReviewAdapter.
             getUomLabels();
             txt_product_name = view.findViewById(R.id.txt_product_name);
             txt_price_of_product = view.findViewById(R.id.txt_price_of_product);
+            txt_per_Rate= view.findViewById(R.id.txt_per_Rate);
             txt_case_no = view.findViewById(R.id.txt_case_no);
 
             txt_bottle_no = view.findViewById(R.id.txt_bottle_no);
@@ -126,21 +130,22 @@ public class OrderReviewAdapter extends RecyclerView.Adapter<OrderReviewAdapter.
 
 
             txt_product_name.setTextColor(context.getResources().getColor(R.color.black));
-            txt_case_no.setTextColor(context.getResources().getColor(R.color.grey_500));
-            txt_free_case_no.setTextColor(context.getResources().getColor(R.color.grey_500));
-            txt_bottle_no.setTextColor(context.getResources().getColor(R.color.grey_500));
-            txt_free_bottle_no.setTextColor(context.getResources().getColor(R.color.grey_500));
+            txt_case_no.setTextColor(context.getResources().getColor(R.color.black));
+            txt_free_case_no.setTextColor(context.getResources().getColor(R.color.black));
+            txt_bottle_no.setTextColor(context.getResources().getColor(R.color.black));
+            txt_free_bottle_no.setTextColor(context.getResources().getColor(R.color.black));
             txt_price_of_product.setTextColor(context.getResources().getColor(R.color.black));
+            txt_per_Rate.setTextColor(context.getResources().getColor(R.color.black));
 
             txt_case_label = view.findViewById(R.id.txt_case_label);
             txt_bottle_label = view.findViewById(R.id.txt_bottle_label);
             txt_free_case_label = view.findViewById(R.id.txt_free_case_label);
             txt_free_bottle_label = view.findViewById(R.id.txt_free_bottle_label);
 
-            txt_case_label.setTextColor(context.getResources().getColor(R.color.grey_500));
-            txt_bottle_label.setTextColor(context.getResources().getColor(R.color.grey_500));
-            txt_free_case_label.setTextColor(context.getResources().getColor(R.color.grey_500));
-            txt_free_bottle_label.setTextColor(context.getResources().getColor(R.color.grey_500));
+            txt_case_label.setTextColor(context.getResources().getColor(R.color.black));
+            txt_bottle_label.setTextColor(context.getResources().getColor(R.color.black));
+            txt_free_case_label.setTextColor(context.getResources().getColor(R.color.black));
+            txt_free_bottle_label.setTextColor(context.getResources().getColor(R.color.black));
 
 
             img_delete.setOnClickListener(new View.OnClickListener() {
@@ -152,7 +157,7 @@ public class OrderReviewAdapter extends RecyclerView.Adapter<OrderReviewAdapter.
 
                         AlertDialog.Builder builder = new AlertDialog.Builder(context);
                         builder.setTitle("Confirm Delete")
-                                .setMessage("Do you want to delete order?")
+                                .setMessage("Do you want to remove Item?")
                                 .setIcon(android.R.drawable.ic_delete)
                                 .setPositiveButton("Yes",
                                         new DialogInterface.OnClickListener() {
@@ -168,9 +173,9 @@ public class OrderReviewAdapter extends RecyclerView.Adapter<OrderReviewAdapter.
                                                 OrderReviewAdapter.this.notifyItemRemoved(pos);
                                                 MyApplication.logi(LOG_TAG, "ItemCount-->" + ItemCount);
                                                 if (ItemCount==1) {
-                                                    displayMessage2(context, "Order deleted successfully.");
+                                                    displayMessage2(context, "Item deleted successfully.");
                                                 } else {
-                                                    displayMessage1(context, "Order deleted successfully.");
+                                                    displayMessage1(context, "Item deleted successfully.");
                                                 }
 
                                                 String total = TABLE_TEMP_ORDER_DETAILS.getSumOfAllItems(MyApplication.get_session(MyApplication.SESSION_ORDER_ID));
@@ -263,7 +268,7 @@ public class OrderReviewAdapter extends RecyclerView.Adapter<OrderReviewAdapter.
                             MyApplication.logi(LOG_TAG, "val_of_botl_after_discount if rps-->" + val_2);
                             double value = ((edited_case_value * val_1) + (edited_btl_value * val_2));
                             //double value = ((no_1 * val_1) + (no_2 * val_2));
-                            model.setPrice_of_product(String.valueOf(value));
+                            model.setPrice_of_product("₹ " + String.format("%.2f", value));
 
                             txt_price_of_product.setText("₹ " + String.format("%.2f", value));
 
@@ -281,7 +286,7 @@ public class OrderReviewAdapter extends RecyclerView.Adapter<OrderReviewAdapter.
                             val_2 -= val_of_botl_after_discount;
                             MyApplication.logi(LOG_TAG, "val_of_botl_after_discount-->" + val_2);
                             double value = ((edited_case_value * val_1) + (edited_btl_value * val_2));
-                            model.setPrice_of_product(String.valueOf(value));
+                            model.setPrice_of_product(" ₹ "+ String.format("%.2f", value));
 
                             txt_price_of_product.setText("₹ " + String.format("%.2f", value));
 
@@ -292,7 +297,7 @@ public class OrderReviewAdapter extends RecyclerView.Adapter<OrderReviewAdapter.
                             double val_1 = model.getDiscounted_single_case_rate();
                             double val_2 = model.getSingle_btl_price();
                             double value = ((edited_case_value * val_1) + (edited_btl_value * val_2));
-                            model.setPrice_of_product(String.valueOf(value));
+                            model.setPrice_of_product("₹ " + String.format("%.2f", value));
                             txt_price_of_product.setText(model.getPrice_of_product());
 
                         }
@@ -309,16 +314,20 @@ public class OrderReviewAdapter extends RecyclerView.Adapter<OrderReviewAdapter.
 
                       //  txt_price_of_product.setText(model.getPrice_of_product());
 
-                        long ret1 = TABLE_TEMP_ORDER_DETAILS.insertOrderDetails(MyApplication.get_session(MyApplication.SESSION_ORDER_ID), model.getItem_id(), model.getProduct_name(), String.valueOf(edited_case_value), String.valueOf(edited_btl_value),
-                                String.valueOf(single_btl_value_after_discount), String.valueOf(single_case_value_after_discount), Float.parseFloat(model.getPrice_of_product()), "0", "0", "update_data");
+                        try {
+                            ret12 = TABLE_TEMP_ORDER_DETAILS.insertOrderDetails(MyApplication.get_session(MyApplication.SESSION_ORDER_ID), model.getItem_id(), model.getProduct_name(), String.valueOf(edited_case_value), String.valueOf(edited_btl_value),
+                                    String.valueOf(single_btl_value_after_discount), String.valueOf(single_case_value_after_discount), Float.parseFloat(model.getPrice_of_product()), "0", "0", "update_data");
+                        } catch (NumberFormatException e) {
+                            e.printStackTrace();
+                        }
 
-                        if (ret1 == 0) {
-                            MyApplication.logi(LOG_TAG, "TABLE_TEMP_ORDER_DETAILS successfully inserted " + ret1);
+                        if (ret12 == 0) {
+                            MyApplication.logi(LOG_TAG, "TABLE_TEMP_ORDER_DETAILS successfully inserted " + ret12);
                             //  Toast.makeText(context, "Updated data successfully...", Toast.LENGTH_SHORT).show();
 
 
                         } else {
-                            MyApplication.logi(LOG_TAG, "TABLE_TEMP_ORDER_DETAILS not successfully inserted " + ret1);
+                            MyApplication.logi(LOG_TAG, "TABLE_TEMP_ORDER_DETAILS not successfully inserted " + ret12);
                         }
 
                         orderReviewList.remove(pos);
@@ -412,7 +421,7 @@ public class OrderReviewAdapter extends RecyclerView.Adapter<OrderReviewAdapter.
                             MyApplication.logi(LOG_TAG, "val_of_botl_after_discount if rps-->" + val_2);
                             double value = ((edited_case_value * val_1) + (edited_btl_value * val_2));
                             //double value = ((no_1 * val_1) + (no_2 * val_2));
-                            model.setPrice_of_product(String.valueOf(value));
+                            model.setPrice_of_product("₹ " + String.format("%.2f", value));
 
                             txt_price_of_product.setText(model.getPrice_of_product());
 
@@ -428,7 +437,7 @@ public class OrderReviewAdapter extends RecyclerView.Adapter<OrderReviewAdapter.
                             val_2 -= val_of_botl_after_discount;
                             MyApplication.logi(LOG_TAG, "val_of_botl_after_discount-->" + val_2);
                             double value = ((edited_case_value * val_1) + (edited_btl_value * val_2));
-                            model.setPrice_of_product(String.valueOf(value));
+                            model.setPrice_of_product("₹ " + String.format("%.2f", value));
 
                             txt_price_of_product.setText(model.getPrice_of_product());
 
@@ -437,7 +446,7 @@ public class OrderReviewAdapter extends RecyclerView.Adapter<OrderReviewAdapter.
                             double val_1 = model.getDiscounted_single_case_rate();
                             double val_2 = model.getSingle_btl_price();
                             double value = ((edited_case_value * val_1) + (edited_btl_value * val_2));
-                            model.setPrice_of_product(String.valueOf(value));
+                            model.setPrice_of_product("₹ " + String.format("%.2f", value));
                             txt_price_of_product.setText(model.getPrice_of_product());
 
                         }
@@ -456,16 +465,20 @@ public class OrderReviewAdapter extends RecyclerView.Adapter<OrderReviewAdapter.
 
                         txt_price_of_product.setText(model.getPrice_of_product());*/
 
-                        long ret1 = TABLE_TEMP_ORDER_DETAILS.insertOrderDetails(MyApplication.get_session(MyApplication.SESSION_ORDER_ID), model.getItem_id(), model.getProduct_name(), String.valueOf(edited_case_value), String.valueOf(edited_btl_value),
-                                String.valueOf(single_btl_value_after_discount), String.valueOf(single_case_value_after_discount), Float.parseFloat(model.getPrice_of_product()), "0", "0", "update_data");
+                        try{
+                        ret11= TABLE_TEMP_ORDER_DETAILS.insertOrderDetails(MyApplication.get_session(MyApplication.SESSION_ORDER_ID), model.getItem_id(), model.getProduct_name(), String.valueOf(edited_case_value), String.valueOf(edited_btl_value),
 
-                        if (ret1 == 0) {
-                            MyApplication.logi(LOG_TAG, "TABLE_TEMP_ORDER_DETAILS successfully inserted " + ret1);
+                                String.valueOf(single_btl_value_after_discount), String.valueOf(single_case_value_after_discount), Float.parseFloat(model.getPrice_of_product()), "0", "0", "update_data");
+                       }catch (NumberFormatException e){
+                           e.printStackTrace();
+                       }
+                        if (ret11 == 0) {
+                            MyApplication.logi(LOG_TAG, "TABLE_TEMP_ORDER_DETAILS successfully inserted " + ret11);
                             //  Toast.makeText(context, "Updated data successfully...", Toast.LENGTH_SHORT).show();
 
 
                         } else {
-                            MyApplication.logi(LOG_TAG, "TABLE_TEMP_ORDER_DETAILS not successfully inserted " + ret1);
+                            MyApplication.logi(LOG_TAG, "TABLE_TEMP_ORDER_DETAILS not successfully inserted " + ret11);
                         }
 
                         orderReviewList.remove(pos);
@@ -585,7 +598,8 @@ public class OrderReviewAdapter extends RecyclerView.Adapter<OrderReviewAdapter.
                 //Toast.makeText(context, "You Exceeded the limit", Toast.LENGTH_SHORT).show();
             }
         }
-
+holder.txt_per_Rate.setText( String.valueOf(model.getSingle_btl_price()));
+      // holder.txt_per_Rate.setText((int) model.getSingle_btl_price());
         ////////////////IF RS
         if (model.getDiscountType().equalsIgnoreCase("Rs")) {
             double discount = Double.parseDouble(model.getDiscountRate());
@@ -601,7 +615,7 @@ public class OrderReviewAdapter extends RecyclerView.Adapter<OrderReviewAdapter.
             MyApplication.logi(LOG_TAG, "val_of_botl_after_discount if rps-->" + val_2);
             double value = ((edited_case_value * val_1) + (edited_btl_value * val_2));
             //double value = ((no_1 * val_1) + (no_2 * val_2));
-            model.setPrice_of_product(String.valueOf(value));
+            model.setPrice_of_product("₹ " + String.format("%.2f", value));
             MyApplication.logi(LOG_TAG, "On BindHolder=" + value);
             holder.txt_price_of_product.setText(model.getPrice_of_product());
          //   holder.txt_price_of_product.setText("₹ " + String.format("%.2f", value));
@@ -618,7 +632,7 @@ public class OrderReviewAdapter extends RecyclerView.Adapter<OrderReviewAdapter.
             val_2 -= val_of_botl_after_discount;
             MyApplication.logi(LOG_TAG, "val_of_botl_after_discount-->" + val_2);
             double value = ((edited_case_value * val_1) + (edited_btl_value * val_2));
-            model.setPrice_of_product(String.valueOf(value));
+            model.setPrice_of_product("₹ " + String.format("%.2f", value));
             MyApplication.logi(LOG_TAG, "On BindHolder=" + value);
             holder.txt_price_of_product.setText(model.getPrice_of_product());
 
@@ -626,8 +640,13 @@ public class OrderReviewAdapter extends RecyclerView.Adapter<OrderReviewAdapter.
         MyApplication.logi(LOG_TAG, "On BindHolder=" + model.getPrice_of_product());
         holder.txt_price_of_product.setText(model.getPrice_of_product());
 
-        long ret1 = TABLE_TEMP_ORDER_DETAILS.insertOrderDetails(MyApplication.get_session(MyApplication.SESSION_ORDER_ID), model.getItem_id(), model.getProduct_name(), String.valueOf(edited_case_value), String.valueOf(edited_btl_value),
-                String.valueOf(single_btl_value_after_discount), String.valueOf(single_case_value_after_discount), Float.parseFloat(model.getPrice_of_product()), "0", "0", "update_data");
+        long ret1 = 0;
+        try {
+            ret1 = TABLE_TEMP_ORDER_DETAILS.insertOrderDetails(MyApplication.get_session(MyApplication.SESSION_ORDER_ID), model.getItem_id(), model.getProduct_name(), String.valueOf(edited_case_value), String.valueOf(edited_btl_value),
+                    String.valueOf(single_btl_value_after_discount), String.valueOf(single_case_value_after_discount), Float.parseFloat(model.getPrice_of_product()), "0", "0", "update_data");
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
 
         if (ret1 == 0) {
             MyApplication.logi(LOG_TAG, "TABLE_TEMP_ORDER_DETAILS successfully inserted " + ret1);
@@ -770,7 +789,7 @@ public class OrderReviewAdapter extends RecyclerView.Adapter<OrderReviewAdapter.
                 MyApplication.logi(LOG_TAG, "total_price_of_product--------" + total_price_of_product);
                 String amt1 = String.format("%.2f", total_price_of_product);
                 MyApplication.logi(LOG_TAG, "amt1 total_price_of_product--------" + amt1);
-                model.setPrice_of_product(amt1);
+                model.setPrice_of_product("₹ " + String.format("%.2f", amt1));
 
 
                 long ret1 = TABLE_TEMP_ORDER_DETAILS.insertOrderDetails(MyApplication.get_session(MyApplication.SESSION_ORDER_ID), model.getItem_id(), model.getProduct_name(), String.valueOf(edited_case_value), String.valueOf(edited_btl_value),

@@ -66,7 +66,7 @@ public class SubItemDataAdapter extends RecyclerView.Adapter<SubItemDataAdapter.
     float item_total;
     ArrayList<SubItemDataModel> res = new ArrayList<>();
     String  ORDBOOKUOMLABEL = "",biguom = "",smalluom="";
-
+boolean istrue;
 
 
     public SubItemDataAdapter(Context context, List<SubItemDataModel> subItemList, float item_total) {
@@ -647,6 +647,10 @@ public class SubItemDataAdapter extends RecyclerView.Adapter<SubItemDataAdapter.
         holder.btn_save_to_cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                istrue=TABLE_TEMP_ORDER_DETAILS.istrue(MyApplication.get_session(MyApplication.SESSION_ORDER_ID));
+
+                MyApplication.logi(LOG_TAG, "IN istrue="+istrue);
 /*
                 int btl = Integer.parseInt(holder.edt_no_of_bottle.getText().toString().trim());
                 int cases = Integer.parseInt(holder.edt_no_of_case.getText().toString().trim());

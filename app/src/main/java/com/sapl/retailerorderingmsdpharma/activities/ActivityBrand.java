@@ -12,6 +12,8 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.sapl.retailerorderingmsdpharma.MyDatabase.TABLE_PITEM;
@@ -31,7 +33,7 @@ import java.util.List;
 public class ActivityBrand extends AppCompatActivity {
 
     public static String LOG_TAG = "ActivityBrand";
-    public static CustomEditTextMedium edt_search_distributor;
+    public static EditText edt_search_distributor;
     Context context = null;
     List<BrandModel> brand = null, searchList = null;
 
@@ -43,7 +45,7 @@ public class ActivityBrand extends AppCompatActivity {
         context = this;
         initComponants();
         initComponantListner();
-        bindData();
+      bindData();
     }
 
 
@@ -62,6 +64,11 @@ public class ActivityBrand extends AppCompatActivity {
 
     public static void showSearchEdit() {
         edt_search_distributor.setVisibility(View.VISIBLE);
+        edt_search_distributor.setPadding(10,0,0,0);
+        edt_search_distributor.requestFocus();
+
+
+
     }
 
 

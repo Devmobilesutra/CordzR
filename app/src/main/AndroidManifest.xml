@@ -95,6 +95,7 @@
         <activity android:name=".activities.ActivityStatusTabs" />
         <activity android:name=".activities.AcitivityAllStatusList" />
         <activity android:name=".activities.ActivityPendingStatus" />
+        <activity android:name=".activities.ActivityDeleveredStatus" />
         <activity android:name=".activities.ActivityAcceptedStatus" />
         <activity android:name=".activities.ActivityRejectedStatus" />
         <activity android:name=".activities.ActivityItemDetails" />

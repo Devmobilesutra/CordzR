@@ -31,7 +31,8 @@
                 android:hint="@string/search_sub_group"
                 android:layout_marginLeft="@dimen/page_margin"
                 android:layout_marginRight="@dimen/page_margin"
-                android:layout_marginBottom="@dimen/dp16"/>
+                android:layout_marginBottom="@dimen/dp16"
+                android:focusable="true"/>
         </RelativeLayout>
 
 

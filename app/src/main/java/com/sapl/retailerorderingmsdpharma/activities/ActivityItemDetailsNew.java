@@ -30,7 +30,7 @@ public class ActivityItemDetailsNew extends AppCompatActivity {
 
     Context context = null;
     CustomButtonRegular btn_delivered;
-    ImageView img_cart,img_menu;
+    ImageView img_cart,img_back;
     public static CircularTextView txt_no_of_product_taken;
 
     @Override
@@ -58,13 +58,15 @@ public class ActivityItemDetailsNew extends AppCompatActivity {
         });
 
 
-        img_menu = findViewById(R.id.img_menu);
-        img_menu.setVisibility(View.GONE);
-        img_menu.setOnClickListener(new View.OnClickListener() {
+        img_back = findViewById(R.id.img_back);
+        img_back.setVisibility(View.VISIBLE);
+        img_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Toast.makeText(context, "This feature is coming soon", Toast.LENGTH_SHORT).show();
-                MyApplication.displayMessage(context,"This feature is coming soon...");
+                Intent intent = new Intent(ActivityItemDetailsNew.this, ActivityStatusTabs.class);
+               // intent.putExtra("MOVE_TO_SUB_GROUP", "YES");
+                startActivity(intent);
 
             }
         });

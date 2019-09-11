@@ -387,11 +387,11 @@ public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.MyView
         });
 
 
-        edt_case_no.setMinWidth(30);
-        edt_bottle_no.setMinWidth(30);
+        edt_case_no.setMinWidth(20);
+        edt_bottle_no.setMinWidth(20);
 
-        txt_free_case_no.setMinWidth(30);
-        txt_free_bottle_no.setMinWidth(30);
+        txt_free_case_no.setMinWidth(20);
+        txt_free_bottle_no.setMinWidth(20);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             edt_case_no.setBackground(context.getResources().getDrawable(R.drawable.border_background));

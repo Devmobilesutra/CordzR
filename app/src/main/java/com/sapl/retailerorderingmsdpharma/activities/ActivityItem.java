@@ -82,6 +82,9 @@ public class ActivityItem extends AppCompatActivity {
 
     public static void showSearchEdit() {
         edt_search_distributor.setVisibility(View.VISIBLE);
+        edt_search_distributor.setPadding(10,0,0,0);
+        edt_search_distributor.requestFocus();
+
     }
 
 

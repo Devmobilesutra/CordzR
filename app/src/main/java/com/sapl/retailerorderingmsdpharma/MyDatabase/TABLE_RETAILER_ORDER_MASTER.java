@@ -188,9 +188,12 @@ public class TABLE_RETAILER_ORDER_MASTER {
         MyApplication.logi(LOG_TAG, "in getOrderStatusListPending()");
 
 
-        String query = "SELECT r.OrderId as OrderId,r.OrderStatus as status,r.TotalAmount as Amount,r.OrderDate as Date, " +
+   /*     String query = "SELECT r.OrderId as OrderId,r.OrderStatus as status,r.TotalAmount as Amount,r.OrderDate as Date, " +
                 "p.Distributor as Name,p.OUTLETINFO from RetailerOrderMaster r ,PDistributor p ,OrderStatus s   where p.DistributorId = r.DistributorId and OrderStatus =" + status + " ORDER BY OrderDate asc";
-
+*/
+        String query ="SELECT r.OrderId as OrderId,r.OrderStatus as status,r.TotalAmount as Amount,r.OrderDate as Date, " +
+                "p.Distributor as Name,p.OUTLETINFO from RetailerOrderMaster r ,PDistributor p   " +
+                "where p.DistributorId = r.DistributorId and OrderStatus =" + status + " ORDER BY  r.OrderDate asc";
 
         MyApplication.logi("getOrderStatusList ", "In tableHasData query individual :" + query);
         Cursor c = db.rawQuery(query, null);

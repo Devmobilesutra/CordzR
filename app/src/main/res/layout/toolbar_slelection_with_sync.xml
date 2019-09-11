@@ -11,14 +11,13 @@
         android:background="@color/heading_background">
 
         <ImageView
-            android:id="@+id/img_menu"
+            android:id="@+id/img_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/page_margin"
-            android:src="@drawable/menu_new" />
+            android:layout_centerInParent="true"
+            android:src="@drawable/back"
+            android:tint="@color/black" />
 
         <com.sapl.retailerorderingmsdpharma.customView.CustomTextViewMedium
             android:id="@+id/txt_title"

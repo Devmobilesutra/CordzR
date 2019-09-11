@@ -23,6 +23,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -76,6 +77,7 @@ public class ActivityDashBoard extends AppCompatActivity implements
     TextView txt_title;
     ImageView img_order_booking, img_order_status, img_resource, img_menu,img_profile_update;
     ImageView img_cart;
+    Button logout;
     static String LOG_TAG = "ActivityDashBoard ";
     SwipeRefreshLayout mSwipeRefreshLayout;
     RelativeLayout dash_rr;
@@ -221,6 +223,7 @@ public class ActivityDashBoard extends AppCompatActivity implements
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        logout = findViewById(R.id.nav_Logout);
         navigationView.setNavigationItemSelectedListener((NavigationView.OnNavigationItemSelectedListener) this);
 
 
@@ -388,7 +391,28 @@ public class ActivityDashBoard extends AppCompatActivity implements
 
         img_menu = findViewById(R.id.img_menu);
 
-      /*  img_menu.setOnClickListener(new View.OnClickListener() {
+
+        logout.setOnClickListener(new View.OnClickListener() {
+                                      @Override
+                                      public void onClick(View v) {
+AlertDialog.Builder builder=new AlertDialog.Builder(context);
+                                       //   AlertDialog.Builder builder = new AlertDialog.Builder();
+                                          builder.setTitle(getResources().getString(R.string.Close_Application))
+                                                  .setMessage(getResources().getString(R.string.do_you_want_logout))
+                                                  .setIcon(android.R.drawable.ic_dialog_alert)
+                                                  .setPositiveButton(getResources().getString(R.string.Logout), new DialogInterface.OnClickListener() {
+                                                      @Override
+                                                      public void onClick(DialogInterface dialogInterface, int i) {
+                                                          //System.exit(0);
+                                                          logout();
+                                                      }
+                                                  }).setNegativeButton(getResources().getString(R.string.cancel), null)
+                                                  .show();
+
+                                      }
+                                      });
+
+         /*  img_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                // Toast.makeText(context, "This feature is coming soon...", Toast.LENGTH_SHORT).show();
@@ -397,23 +421,23 @@ public class ActivityDashBoard extends AppCompatActivity implements
             }
         });*/
 
-        //GOES THE THE PAGE WHERE ITEMS ARE ADDED TO CART BUT NOT YET SUBMITED
-        img_cart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int countOfAddToCardItems=TABLE_PDISTRIBUTOR.countOfAddToCardItems();
-                if(countOfAddToCardItems==0){
-                    MyApplication.displayMessage(context,"No items are added to cart yet..");
-                }else {
+                //GOES THE THE PAGE WHERE ITEMS ARE ADDED TO CART BUT NOT YET SUBMITED
+                img_cart.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        int countOfAddToCardItems = TABLE_PDISTRIBUTOR.countOfAddToCardItems();
+                        if (countOfAddToCardItems == 0) {
+                            MyApplication.displayMessage(context, "No items are added to cart yet..");
+                        } else {
 
-                    MyApplication.set_session("distributor_list", "cart");
-                    Intent intent = new Intent(ActivityDashBoard.this, ActivityDistributorList.class);
-                    finish();
-                    overridePendingTransition(R.anim.fade_in_call, R.anim.fade_out_call);
-                    startActivity(intent);
-                }
-            }
-        });
+                            MyApplication.set_session("distributor_list", "cart");
+                            Intent intent = new Intent(ActivityDashBoard.this, ActivityDistributorList.class);
+                            finish();
+                            overridePendingTransition(R.anim.fade_in_call, R.anim.fade_out_call);
+                            startActivity(intent);
+                        }
+                    }
+                });
 
 
         card_order_booking.setOnClickListener(new View.OnClickListener() {
@@ -727,24 +751,6 @@ public class ActivityDashBoard extends AppCompatActivity implements
             MyApplication.logi(LOG_TAG, "In id function................");
            sendAllDataToServer();
         } else if (id == R.id.nav_about) {
-
-        } else if (id == R.id.nav_Logout) {
-
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle(getResources().getString(R.string.Close_Application))
-                    .setMessage(getResources().getString(R.string.do_you_want_logout))
-                    .setIcon(android.R.drawable.ic_dialog_alert)
-                    .setPositiveButton(getResources().getString(R.string.Logout), new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            //System.exit(0);
-                            logout();
-                        }
-                    }).setNegativeButton(getResources().getString(R.string.cancel), null)
-                    .show();
-
-
-
 
         }
 

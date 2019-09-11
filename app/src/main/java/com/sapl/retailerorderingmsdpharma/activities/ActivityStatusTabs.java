@@ -43,7 +43,7 @@ public class ActivityStatusTabs extends TabActivity {
     Context context;
     String LOG_TAG = "ActivityStatusTabs";
     public static CircularTextView txt_no_of_product_taken;
-    ImageView img_cart, img_sync,img_menu;
+    ImageView img_cart, img_sync,img_back;
     public static TabHost tabHost;
     SwipeRefreshLayout mSwipeRefreshLayout;
     LinearLayout linearlayout;
@@ -64,16 +64,21 @@ public class ActivityStatusTabs extends TabActivity {
     private void initComponentListner() {
         MyApplication.logi(LOG_TAG,"IN  initComponentListner OF TABS");
 
-        img_menu = findViewById(R.id.img_menu);
-        img_menu.setVisibility(View.GONE);
+        img_back = findViewById(R.id.img_back);
+        img_back.setVisibility(View.GONE);
         txt_title  = findViewById(R.id.txt_title);
         txt_title.setText("Order Booked Status");
         txt_title.setTextColor((Color.parseColor(MyApplication.get_session(MyApplication.SESSION_Text_Primary_Color))));
-        img_menu.setOnClickListener(new View.OnClickListener() {
+        img_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MyApplication.displayMessage(context,"This feature is coming soon...");
-                //Toast.makeText(context, "This feature is coming soon", Toast.LENGTH_SHORT).show();
+                MyApplication.logi(LOG_TAG, "in back pressed");
+                Intent intent = new Intent(getApplicationContext(), ActivityDashBoard.class);
+                //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                //startActivity(intent);
+                finish();
+                overridePendingTransition(R.anim.fade_in_call, R.anim.fade_out_call);
+                startActivity(intent);
 
             }
         });
@@ -281,6 +286,13 @@ public class ActivityStatusTabs extends TabActivity {
         spec = tabHost.newTabSpec("3");
         spec.setIndicator("REJECTED");
         intent = new Intent(getApplicationContext(), ActivityRejectedStatus.class);
+        spec.setContent(intent);
+        tabHost.addTab(spec);
+
+
+        spec = tabHost.newTabSpec("4");
+        spec.setIndicator("DELEVERED");
+        intent = new Intent(getApplicationContext(), ActivityDeleveredStatus.class);
         spec.setContent(intent);
         tabHost.addTab(spec);
 

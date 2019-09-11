@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.sapl.retailerorderingmsdpharma.customView.CustomEditTextMedium
+            <EditText
                 android:id="@+id/edt_search_distributor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -31,7 +31,8 @@
                 android:hint="@string/search_Brand"
                 android:layout_marginLeft="@dimen/page_margin"
                 android:layout_marginRight="@dimen/page_margin"
-                android:layout_marginBottom="@dimen/dp16"/>
+                android:layout_marginBottom="@dimen/dp16"
+                android:focusable="true"/>
         </RelativeLayout>
 
         <LinearLayout
